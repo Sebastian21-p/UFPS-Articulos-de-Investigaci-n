@@ -4,10 +4,21 @@ function login(req, res){
     if(req.session.loggedin != true){
         res.render('index')
     } else {
-        res.render('inicio', {name: req.session.name});
+        res.render('inicio', {name: req.session.name})
     }
     
 }
+
+function inicio(req, res){
+    if(req.session.loggedin != true){
+        res.render('index')
+    } else {
+        res.render('inicio', {name: req.session.name})
+    }
+    
+}
+
+
 
 
 function auth(req, res){
@@ -78,5 +89,6 @@ module.exports = {
     register,
     storeUser,
     auth,
-    logout
+    logout, 
+    inicio
 }
