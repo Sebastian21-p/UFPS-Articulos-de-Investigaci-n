@@ -4,7 +4,6 @@ const myconnection = require('express-myconnection')
 const mysql = require('mysql')
 const session = require('express-session')
 const bodyParser = require('body-parser')
-const cookieParser = require('cookie-parser')
 
 
 const loginRoutes = require('./routes/login')
@@ -13,10 +12,10 @@ const app = express()
 app.set('port', 3000)
 
 app.set('views', __dirname + '/views')
-app.engine('.ejs', engine({
-    extname: '.ejs',
+app.engine('.hbs', engine({
+    extname: '.hbs',
 }))
-app.set('view engine', 'ejs')
+app.set('view engine', 'hbs')
 
 app.use(bodyParser.urlencoded({
     extended: true
@@ -47,7 +46,7 @@ app.use(express.static(__dirname + '/public'));
 
 app.get('/', (req, res) =>{
     if(req.session.loggedin == true){
-        res.render('inicio', {name: req.session.name}  )
+        res.render('inicio', {name: req.session.nombre}  )
     } else {
         res.redirect('/login');
     }

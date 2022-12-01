@@ -11,7 +11,7 @@ router.get('/registro', loginController.register)
 
 router.post('/registro', loginController.storeUser)
 
-router.get('/inicio', loginController.inicio)
+router.get('/inicio', loginController.login)
 
 router.get('/logout', loginController.logout)
 
