@@ -6,7 +6,6 @@ const session = require('express-session')
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 
-const path = require('path')
 
 const loginRoutes = require('./routes/login')
 
@@ -44,7 +43,7 @@ app.listen(app.get('port'), () => {
 
 app.use('/', loginRoutes)
 
-app.get(express.static(path.join(__dirname, 'public/')));
+app.use(express.static(__dirname + '/public'));
 
 app.get('/', (req, res) =>{
     if(req.session.loggedin == true){
