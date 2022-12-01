@@ -13,10 +13,10 @@ const app = express()
 app.set('port', 3000)
 
 app.set('views', __dirname + '/views')
-app.engine('.hbs', engine({
-    extname: '.hbs',
+app.engine('.ejs', engine({
+    extname: '.ejs',
 }))
-app.set('view engine', 'hbs')
+app.set('view engine', 'ejs')
 
 app.use(bodyParser.urlencoded({
     extended: true
