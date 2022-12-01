@@ -1,7 +1,13 @@
 const bcrypt = require('bcrypt')
 
 function login(req, res){
-    console.log(req.session.name);
+    if(req.session.nombre){
+        console.log('si ' + req.session.nombre);
+    }
+    else {
+        console.log('no');
+    }
+    
     if(req.session.loggedin != true){
         res.render('index')
     } else {
@@ -10,14 +16,6 @@ function login(req, res){
     
 }
 
-function inicio(req, res){
-    if(req.session.loggedin != true){
-        res.render('index')
-    } else {
-        res.redirect('/inicio')
-    }
-    
-}
 
 
 
@@ -34,11 +32,8 @@ function auth(req, res){
                         res.render('index', {error: 'Error: incorrect password !'})
                     } else {
                         req.session.loggedin = true
-                        //req.session.name = element.name
-                        //console.log(element);
-                        res.render('inicio', {
-                            data: element
-                        })
+                        req.session.nombre = element.nombre
+                        res.redirect('/')
                     }
                  });
                 })
@@ -93,6 +88,5 @@ module.exports = {
     register,
     storeUser,
     auth,
-    logout, 
-    inicio
+    logout
 }
