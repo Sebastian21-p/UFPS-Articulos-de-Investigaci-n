@@ -1,17 +1,11 @@
 const bcrypt = require('bcrypt')
 
 function login(req, res){
-    if(req.session.nombre){
-        console.log('si ' + req.session.nombre);
-    }
-    else {
-        console.log('no');
-    }
     
     if(req.session.loggedin != true){
         res.render('index')
     } else {
-        res.render('inicio', {name: req.session.name})
+        res.render('inicio', {name: req.session.name, estado: req.session.estado})
     }
     
 }
@@ -33,6 +27,7 @@ function auth(req, res){
                     } else {
                         req.session.loggedin = true
                         req.session.nombre = element.nombre
+                        req.session.estado = element.estado
                         res.redirect('/')
                     }
                  });
