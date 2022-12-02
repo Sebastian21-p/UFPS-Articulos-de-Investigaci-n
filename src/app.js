@@ -7,6 +7,7 @@ const bodyParser = require('body-parser')
 
 
 const loginRoutes = require('./routes/login')
+const articulosRoutes = require('./routes/articulos')
 
 const app = express()
 app.set('port', 3000)
@@ -40,13 +41,34 @@ app.listen(app.get('port'), () => {
     console.log('listening on port ', app.get('port'));
 })
 
+app.use(bodyParser.json())
+
 app.use('/', loginRoutes)
+app.use('/articulos', articulosRoutes)
 
 app.use(express.static(__dirname + '/public'));
 
+app.get('/articulos', (req, res) =>{
+    if(req.session.loggedin == true){
+        if(req.session.estado == 1){
+            res.render('RelArt' )
+        } else {
+            res.render('RelArtU' )
+        }        
+    } else {
+        res.redirect('/login');
+    }
+})
+
+
 app.get('/', (req, res) =>{
     if(req.session.loggedin == true){
-        res.render('inicio', {name: req.session.nombre}  )
+        if(req.session.estado == 1){
+            res.render('inicioAdm', {id: req.session.id}  )
+        } else {
+            res.render('inicio', {id: req.session.id}  )
+        }
+        
     } else {
         res.redirect('/login');
     }

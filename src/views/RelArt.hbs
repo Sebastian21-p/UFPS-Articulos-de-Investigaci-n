@@ -24,21 +24,28 @@
             <ul class="navbar-nav ms-auto">
             
               <li class="nav-item">
-                <a class="nav-link" href="#">Volver</a>
+                <a class="nav-link" href="/">Volver</a>
               </li>
               <li class="nav-item" >
                 
-                <a class="nav-link" href="#">Salir <i class="fa fa-sign-out"></i></a>
+                <a class="nav-link" href="/logout">Salir <i class="fa fa-sign-out"></i></a>
               </li>
             </ul>
           </div>
         </div>
     </nav>
     <!--buscador-->
-    <div class="container" id="buscador">      
+    <div class="container" id="buscador">
+        <div class="row">
+            <div class="col-xd-12 col-sm-11">
         <p>Filtro de busqueda: <input type="text" size="50%"></p>
+        </div>
+        <div class="col-sm-1">
+          <a href="/articulos/registrar"><button type="button" class="btn btn-danger btn-circle btn-lg"><i class="fa fa-plus"></i></button></a>          
+        </div>
         </button>
     </div>
+
     <!--tabla-->
     <div class="container">
         <h3>Relacion de Articulos</h3>
