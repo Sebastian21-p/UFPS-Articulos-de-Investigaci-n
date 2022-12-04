@@ -42,7 +42,7 @@
 
     <!--Formulario-->
     <div class="container">
-        <form action="" method="POST">
+        <form action="" method="POST" id="formulario">
             <div class="form-group">
                 <label for="input">Titulo</label>
                 <input type="text" class="form-control" name="titulo" id="titulo" placeholder="Titulo" required>
@@ -59,7 +59,7 @@
                 <div class="col-sm-5">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Correo</label>
-                        <input type="email" name="correo" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Correo Electrónico">
+                        <input type="email" name="correo" class="form-control" id="correo" aria-describedby="emailHelp" placeholder="Correo Electrónico">
                     </div>
                 </div>
             </div>
@@ -71,7 +71,7 @@
                 <div class="col-xd-12 col-sm-4">
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Pais</label>
-                        <select class="form-control" id="exampleFormControlSelect1" name="pais">
+                        <select class="form-control" id="pais" name="pais">
                             <option value="Colombia" selected>Colombia</option>
                             <option value="Venezuela">Venezuela</option>
                             <option value="Argentina">Argentina</option>
@@ -104,17 +104,17 @@
 
             <div class="form-group">
                 <label for="input">Resumen</label>
-                <textarea class="form-control" name="resumen" aria-label="With textarea"></textarea>
+                <textarea class="form-control" id="resumen" name="resumen" aria-label="With textarea"></textarea>
             </div>
 
             <div class="form-group">
                 <label for="input">Conclusiones</label>
-                <textarea class="form-control" name="conclusiones" aria-label="With textarea" required></textarea>
+                <textarea class="form-control" id="conclusiones" name="conclusiones" aria-label="With textarea" required></textarea>
             </div>
 
             <div class="form-group">
                 <label for="input">Notas</label>
-                <textarea class="form-control" name="notas" aria-label="With textarea"></textarea>
+                <textarea class="form-control" id="notas" name="notas" aria-label="With textarea"></textarea>
             </div>
 
             <!--Boton-->
@@ -124,5 +124,5 @@
     </div>
 
 </body>
-
+<script src="/js/guardarArt.js"></script>
 </html>
