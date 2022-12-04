@@ -28,6 +28,7 @@ function auth(req, res){
                         req.session.loggedin = true
                         req.session.nombre = element.nombre
                         req.session.estado = element.estado
+                        req.session.id = element.id
                         res.redirect('/')
                     }
                  });

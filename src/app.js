@@ -51,9 +51,9 @@ app.use(express.static(__dirname + '/public'));
 app.get('/articulos', (req, res) =>{
     if(req.session.loggedin == true){
         if(req.session.estado == 1){
-            res.render('RelArt' )
+            res.render('RelArt', {id: req.session.id} )
         } else {
-            res.render('RelArtU' )
+            res.render('RelArtU', {id: req.session.id} )
         }        
     } else {
         res.redirect('/login');
