@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/editarArt.css">
+    <title>Editar articulo</title>
+</head>
+<body>
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-lg   static-top">
+        <div class="container">
+            <a class="navbar-brand" href="">
+                <img src="/img/logo_ufps.jpg" alt="..." height="100">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="./">Volver</a>
+                    </li>
+                    <li class="nav-item">
+
+                        <a class="nav-link" href="#">Salir <i class="fa fa-sign-out"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+<!--Formulario-->
+<div class="container">
+    <form action="" method="POST">
+        <div class="form-group">
+            <label for="input"><b>Titulo del Articulo</b></label>
+            <p id="titulo">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas asperiores officia eaque iure iusto ea beatae, dicta harum, ad blanditiis vitae cum debitis tenetur vel molestiae voluptas amet, aspernatur nemo?</p>
+        </div>
+        <div class="form-group">
+            <label for="input"><b>Pregunta del Proyecto</b></label>
+            <p id="Pregunta">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas asperiores officia eaque iure iusto ea beatae, dicta harum, ad blanditiis vitae cum debitis tenetur vel molestiae voluptas amet, aspernatur nemo?</p>
+        </div>
+        <div class="form-group">
+            <label for="input">Aporte</label>
+            <textarea class="form-control" name="aporte" aria-label="With textarea" none></textarea>
+        </div>
+        <div class="form-group">
+            <label for="input">Notas</label>
+            <textarea class="form-control" name="notas" aria-label="With textarea"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlSelect1">Estado</label>
+            <select class="form-control" id="exampleFormControlSelect" name="estado" style="width: 20% ;">
+                <option value="Activo" selected>Activo</option>
+                <option value="Inactivo">Inactivo</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="input">Razon de Exclusion</label>
+            <textarea class="form-control" name="notas" aria-label="With textarea"></textarea>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-xd-12 col-sm-3">
+                <a href="">Ver articulo</a>
+            </div>
+        <!--Boton-->
+        <div class="col-sm-9">
+        <button type="submit" class="btn btn-primary" value="registrar" id="guardar">Guardar</button>
+        </div>
+        </form>
+    </div>
+
+</body>
+</html>
