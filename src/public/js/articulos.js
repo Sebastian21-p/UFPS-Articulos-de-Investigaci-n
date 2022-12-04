@@ -57,30 +57,48 @@ function leer() {
     document.getElementById("tbody").innerHTML += ` <tr>
         <td>${titulo}</td>
         <td>${autores}</td>
-        <td>
-          <div class="dropdown show">
-            <a class="btn dropdown-toggle" src="images/puntos.png" href="#" role="button" id="desplegable"
-              data-toggle="dropdown" aria-haspopup="true">
-              <img src="../images/puntos.png" class="align-right" height="30px" width="30px">
-            </a>
-
-
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <a class="dropdown-item" onclick="usarliminar('${titulo}')" data-toggle="modal" style="background-color:#FFFFFF"
-                href="#ventana1">Eliminar</a>
-              <a class="dropdown-item" data-toggle="modal" style="background-color:#FFFFFF" id="btn-abrir-popup2"
-                href="#ventana2">Editar información</a>
-              <a class="dropdown-item" data-toggle="modal" style="background-color:#FFFFFF" id="btn-abrir-popup3"
-                href="#ventana3">Restablecer contraseña</a>
-            </div>
-          </div>
-        </td>
-      </tr>
-
-        `;
+        <td><a href="#" >Ver</a> <a href="#">Editar</a> <button><a onclick="artEliminar('${titulo}')">Eliminar</a></button></td>
+      </tr>`;
   }
   }
 }
+
+function artEliminar(Nombre){
+    let eliminadop = {
+      Nombre
+    }
+  
+    if(localStorage.getItem("eliminados") == null){
+      let u_eliminados = []
+      u_eliminados.push(eliminadop)
+      localStorage.setItem("eliminados",JSON.stringify(u_eliminados))
+    } else{
+      let u_eliminados = JSON.parse(localStorage.getItem("eliminados"))
+      u_eliminados.unshift(eliminadop)
+      localStorage.setItem("eliminados",JSON.stringify(u_eliminados))
+    }
+    eliminar()
+  }
+
+  function eliminar(){
+    let articulos = JSON.parse(localStorage.getItem("Articulos"));
+    let u_eliminados = JSON.parse(localStorage.getItem("eliminados"));
+    for(let i = 0; i<articulos.length; i++){
+      if(u_eliminados[0].Nombre != null &&  articulos[i].Nombre === u_eliminados[0].Nombre){
+        articulos.splice(i,1);
+        u_eliminados.splice(0,1);
+      }
+      
+    }
+    localStorage.setItem("Articulos",JSON.stringify(articulos));
+    localStorage.setItem("eliminados",JSON.stringify(u_eliminados));
+    
+    console.log("Artículo Eliminado Correctamente")
+    leer()
+  }
+
+
+leer()
 
 
 
