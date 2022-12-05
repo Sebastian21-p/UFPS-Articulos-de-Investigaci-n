@@ -13,6 +13,6 @@ router.get('/registrar', articuloController.formatoArticulo)
 
 router.post('/registrar', articuloController.registrarArticulo)
 
-
+router.get('/verArt', articuloController.verArticulo)
 
 module.exports = router

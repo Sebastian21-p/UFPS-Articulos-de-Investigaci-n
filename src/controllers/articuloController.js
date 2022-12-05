@@ -31,6 +31,17 @@ function formatoArticulo(req, res){
     
 }
 
+function verArticulo(req, res){
+    
+    if(req.session.loggedin != true){
+        res.redirect('/')
+    } else {
+        console.log(req.session.id);
+        res.render('verArt', {id: req.session.id})
+    }
+    
+}
+
 function registrarArticulo(req, res){
     
     const data = req.body
@@ -80,5 +91,6 @@ module.exports = {
     listArticulos,
     listArticulosAdm,
     formatoArticulo,
-    registrarArticulo
+    registrarArticulo,
+    verArticulo
 }
