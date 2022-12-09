@@ -29,7 +29,7 @@ function auth(req, res){
                         req.session.nombre = element.nombre
                         req.session.estado = element.estado
                         req.session.id = element.id
-                        res.redirect('/')
+                        res.render('inicio',{name: req.session.nombre})
                     }
                  });
                 })
@@ -40,6 +40,7 @@ function auth(req, res){
         })
     })
 }
+
 
 function register(req, res){
     if(req.session.loggedin != true){

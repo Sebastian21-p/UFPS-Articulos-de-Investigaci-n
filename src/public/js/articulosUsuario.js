@@ -53,15 +53,38 @@ var art1 = {
     for (let i = 0; i < articulos.length; i++) {
       let titulo = articulos[i].Nombre;
       let autores = articulos[i].Autores;
+      let Citacion = articulos[i].Citacion;
+      let Pais = articulos[i].Pais;
+      let Año = articulos[i].Año;
+      let PalabrasClave = articulos[i].PalabrasClave;
+      let Url = articulos[i].Url;
+      let Resumen = articulos[i].Resumen;
+      let Conclusiones = articulos[i].Conclusiones;
+      let Notas = articulos[i].Notas;
   
       document.getElementById("tbody").innerHTML += ` <tr>
           <td>${titulo}</td>
           <td>${autores}</td>
-          <td><a href="#" >Ver</a> <a href="#">Agregar</a> </td>
+          <td><button><a onclick="verArt('${titulo}','${autores}','${Citacion}','${Pais}','${Año}','${PalabrasClave}','${Url}','${Resumen}','${Conclusiones}','${Notas}')" >Ver</a></button> <a href="/articulos/registrar">Agregar</a> </td>
         </tr>`;
     }
     }
   }
+
+  function verArt(titulo,autores,Citacion,Pais,Año,PalabrasClave,Url,Resumen,Conclusiones,Notas){
+    var art = { titulo,autores,Citacion,Pais,Año,PalabrasClave,Url,Resumen,Conclusiones,Notas }
+    console.log("entre aca");
+    if(localStorage.getItem("vista") == null){
+        let revisados = []
+        revisados.push(art)
+        localStorage.setItem("vista",JSON.stringify(revisados))
+      } else{
+        let revisados = JSON.parse(localStorage.getItem("vista"))
+        revisados.push(art)
+        localStorage.setItem("vista",JSON.stringify(revisados))
+      }
+      window.location.href="/articulos/verArt"
+}
   
   leer()
   

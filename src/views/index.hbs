@@ -16,7 +16,7 @@
           <div class="titulo">
             <img id="img" src="/img/LogoUFPS.jpg" >
           </div>
-          <form action="" method="POST"  id="formulario">
+          <form action="/inicio" method="POST"  id="formulario">
             <label for="email" id="email">Email</label>
             <div class="row">                
               <i class="fa fa-user"></i>
@@ -29,7 +29,7 @@
             </div>
             <div class="pass"><a href="#">¿Olvidaste tu contraseña? </a></div>
             
-              <button type="submit" class="btn btn-primary" value="Ingresar" id="ingresar">Ingresar</button>
+              <button type="submit" class="btn btn-primary" value="Ingresar" id="ingresar" href="/inicio.hbs">Ingresar</button>
             <br>
             <a class="link-dark" href="registro" id="link"> Regístrate</a>
           {{#if error}}

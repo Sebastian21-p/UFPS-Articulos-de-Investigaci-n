@@ -55,7 +55,7 @@ function registrarArticulo(req, res){
                         conn.query("SELECT id FROM usuario where email = ?",[data.correo], (err, rows) =>{
                             console.log(rows);
                             var values = {
-                                usuario_id: rows[0].id,
+                                id_usuario: rows[0].id_usuario,
                                 titulo: data.titulo,
                                 autores: data.autores,
                                 citacion: data.citacion,
@@ -68,15 +68,21 @@ function registrarArticulo(req, res){
                                 notas: data.notas
                             } 
                             console.log(values);
-                            /*conn.query('INSERT INTO articulo SET ?', [values], (err, rows2) =>{
-                                console.log(rows2);
-                                res.redirect('/articulos')
-                            })*/
+                            conn.query('INSERT INTO articulo SET ?', [values], (err, rows2) =>{
+                                if (err) {
+                                    res.json(err);
+                                }
+                                else {
+                                    console.log(rows2);
+                                    res.redirect('/articulos')}
+                                
+                                
+                            })
                             
-                                conn.query('INSERT INTO articulo (usuario_id,titulo,autores,citacion,pais,ano,palabras_clave,url,resumen,conclusiones,notas) values ("'+rows[0].id+'","'+data.titulo+'","'+data.autores+'","'+data.citacion+'","'+data.pais+'","'+data.ano+'","'+data.palabrasClave+'","'+data.url+'","'+data.resumen+'","'+data.conclusiones+'","'+data.notas+'")', (err, rows) =>{                                   
+                                /*conn.query('INSERT INTO articulo (usuario_id,titulo,autores,citacion,pais,ano,palabras_clave,url,resumen,conclusiones,notas) values ("'+rows[0].id+'","'+data.titulo+'","'+data.autores+'","'+data.citacion+'","'+data.pais+'","'+data.ano+'","'+data.palabrasClave+'","'+data.url+'","'+data.resumen+'","'+data.conclusiones+'","'+data.notas+'")', (err, rows) =>{                                   
                                     
                                     res.redirect('/articulos')
-                                })
+                                })*/
                             
                         })
                         

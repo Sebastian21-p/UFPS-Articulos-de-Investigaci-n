@@ -41,4 +41,5 @@ function crear(e){
   e.preventDefault();
   console.log("Articulo Guardado Correctamente")
   e.preventDefault()
+  window.location.href="/articulos"
 }
