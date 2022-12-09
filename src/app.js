@@ -60,7 +60,6 @@ app.get('/articulos', (req, res) =>{
     }
 })
 
-
 app.get('/', (req, res) =>{
     if(req.session.loggedin == true){
         if(req.session.estado == 1){

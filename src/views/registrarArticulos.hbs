@@ -29,7 +29,7 @@
                 <ul class="navbar-nav ms-auto">
 
                     <li class="nav-item">
-                        <a class="nav-link" href="./">Volver</a>
+                        <a class="nav-link" href="/articulos/RelArt">Volver</a>
                     </li>
                     <li class="nav-item">
 
@@ -71,11 +71,10 @@
                 <div class="col-xd-12 col-sm-4">
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Pais</label>
-                        <select class="form-control" id="pais" name="pais">
-                            <option value="Colombia" selected>Colombia</option>
-                            <option value="Venezuela">Venezuela</option>
-                            <option value="Argentina">Argentina</option>
-                            <option value="Ecuador">Ecuador</option>
+                        <select class="form-control" id="codigo_pais" name="codigo_pais">
+                            {{#each data}}
+                            <option value="{{codigo_pais}}">{{nombre}}</option>
+                            {{/each}}
                         </select>
                     </div>
                 </div>

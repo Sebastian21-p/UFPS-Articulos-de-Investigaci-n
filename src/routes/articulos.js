@@ -13,8 +13,10 @@ router.get('/registrar', articuloController.formatoArticulo)
 
 router.post('/registrar', articuloController.registrarArticulo)
 
-router.get('/verArt', articuloController.verArticulo)
+router.get('/verArt/:id', articuloController.verArticulo)
 
 router.get('/registros', articuloController.getAll)
+
+router.post('/delete/:id', articuloController.deleteById)
 
 module.exports = router
