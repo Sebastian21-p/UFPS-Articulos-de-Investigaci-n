@@ -1,4 +1,27 @@
+function getAll(req, res){
+    req.getConnection((err, conn) =>{
+        conn.query(`SELECT * FROM articulo`, (err, row) => {
+            if(err){
+                res.json(err);
+            } else {
+                res.json(row);
+            }
+        })})
+}
 
+function deleteById(req, res){
+    req.getConnection((err, conn) =>{
+        const {id} = req.params;
+        console.log(id);
+        conn.query(`DELETE FROM articulo where id_articulo = ?`, [id], (err, row) => {
+            if(err){
+                res.json(err);
+            } else {
+                console.log("Borró !");
+                res.redirect('/articulos/RelArt');
+            }
+        })})
+}
 
 function listArticulos(req, res){
     
@@ -12,34 +35,48 @@ function listArticulos(req, res){
 
 function listArticulosAdm(req, res){
     
-    if(req.session.loggedin != true){
+    if(!req.session.loggedin){
         res.render('index')
     } else {
-        res.render('RelArt', {name: req.session.name, estado: req.session.estado})
+        req.getConnection((err, conn) =>{
+            conn.query(`SELECT * FROM articulo`, (err, row) => {
+                if(err){
+                    res.json(err);
+                } else {
+                    //console.log(row);
+                    res.render('RelArt', {data: row})
+                }
+            })})
     }
-    
 }
 
 function formatoArticulo(req, res){
-    
-    if(req.session.loggedin != true){
+    if(!req.session.loggedin){
         res.redirect('/')
     } else {
-        console.log(req.session.id);
-        res.render('registrarArticulos', {id: req.session.id})
+        //console.log(req.session.id);
+        req.getConnection((err, conn) =>{
+            conn.query(`SELECT * FROM pais`, (err, row) => {
+                if(err){
+                    res.json(err)
+                } else{
+                    res.render('registrarArticulos', {data: row})
+                }
+            })})
     }
-    
 }
 
 function verArticulo(req, res){
-    
-    if(req.session.loggedin != true){
-        res.redirect('/')
-    } else {
-        console.log(req.session.id);
-        res.render('verArt', {id: req.session.id})
-    }
-    
+    req.getConnection((err, conn) =>{
+        const {id} = req.params;
+        conn.query(`SELECT * FROM articulo where id_articulo = ?`,[id] , (err, row) => {
+            if(err){
+                res.json(err);
+            } else {
+                console.log(row)
+                res.render('verArt', {data: row});
+            }
+        })})
 }
 
 function registrarArticulo(req, res){
@@ -53,6 +90,7 @@ function registrarArticulo(req, res){
             } else{                   
                     
                         conn.query("SELECT id_usuario FROM usuario where email = ?",[data.correo], (err, rows) =>{
+<<<<<<< HEAD
                             var values = {
                                 id_usuario: rows[0].id_usuario,
                                 titulo: data.titulo,
@@ -67,22 +105,40 @@ function registrarArticulo(req, res){
                                 notas: data.notas
                             } 
                             console.log(values);
+=======
+                            if(err){
+                                res.json(err);
+                            }
+                            else{
+                                var values = {
+                                    id_usuario: rows[0].id_usuario,
+                                    titulo: data.titulo,
+                                    autores: data.autores,
+                                    citacion: data.citacion,
+                                    codigo_pais: data.codigo_pais,
+                                    ano: data.ano,
+                                    palabras_clave: data.palabrasClave,
+                                    url: data.url,
+                                    resumen: data.resumen,
+                                    conclusiones: data.conclusiones,
+                                    notas: data.notas
+                                } 
+                                console.log(values);
+                            }
+>>>>>>> 47db6b06edda93a4d7900eec221be339de55c101
                             conn.query('INSERT INTO articulo SET ?', [values], (err, rows2) =>{
                                 if (err) {
                                     res.json(err);
                                 }
                                 else {
                                     console.log(rows2);
-                                    res.redirect('/articulos')}
-                                
-                                
+                                    res.redirect('/articulos/RelArt')
+                                }
                             })
-                            
                                 /*conn.query('INSERT INTO articulo (usuario_id,titulo,autores,citacion,pais,ano,palabras_clave,url,resumen,conclusiones,notas) values ("'+rows[0].id+'","'+data.titulo+'","'+data.autores+'","'+data.citacion+'","'+data.pais+'","'+data.ano+'","'+data.palabrasClave+'","'+data.url+'","'+data.resumen+'","'+data.conclusiones+'","'+data.notas+'")', (err, rows) =>{                                   
                                     
                                     res.redirect('/articulos')
                                 })*/
-                            
                         })
                         
             }
@@ -97,5 +153,7 @@ module.exports = {
     listArticulosAdm,
     formatoArticulo,
     registrarArticulo,
-    verArticulo
+    verArticulo,
+    getAll,
+    deleteById
 }

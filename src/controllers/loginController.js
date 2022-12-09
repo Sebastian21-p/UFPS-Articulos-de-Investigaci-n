@@ -10,10 +10,6 @@ function login(req, res){
     
 }
 
-
-
-
-
 function auth(req, res){
     const data = req.body
     
