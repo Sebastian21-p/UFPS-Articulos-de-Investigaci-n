@@ -86,6 +86,30 @@ function verArt(titulo,autores,Citacion,Pais,Año,PalabrasClave,Url,Resumen,Conc
       window.location.href="/articulos/verArt"
 }
 
+const input = document.querySelector("#searchInput");
+const userList = document.querySelector("#arts");
+let users = [];
+
+
+input.addEventListener("keyup", (e) => {
+  const newUsers = users.filter((user) =>
+    `${user.titulo.toLowerCase()}${user.autores.toLowerCase()}${user.botones.toLowerCase()}`.includes(
+      input.value.toLowerCase()
+    )
+  );
+  renderUsers(newUsers);
+});
+
+const createUsersItems = (users) =>
+  users
+    .map((user) => `<tr><td>${user.titulo}</td><td>${user.autores}</td><td> ${user.botones}</td></tr>`)
+    .join(" ");
+
+function renderUsers(users) {
+  const itemsString = createUsersItems(users);
+  userList.innerHTML = itemsString;
+}
+
 function artEliminar(Nombre){
     let eliminadop = {
       Nombre
@@ -121,7 +145,7 @@ function artEliminar(Nombre){
   }
 
 
-leer()
+//leer()
 
 
 

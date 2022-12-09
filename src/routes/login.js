@@ -15,4 +15,5 @@ router.get('/inicio', loginController.login)
 
 router.get('/logout', loginController.logout)
 
+
 module.exports = router

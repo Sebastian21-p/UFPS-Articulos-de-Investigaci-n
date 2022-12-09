@@ -79,6 +79,20 @@ function verArticulo(req, res){
         })})
 }
 
+function filtrado(req, res){
+    const data = req.body
+    req.getConnection((err, conn) =>{
+        console.log(data.filtro);
+        conn.query(`SELECT * FROM articulo where titulo LIKE '%${data.filtro}%'`, (err, row) => {
+            if(err){
+                res.json(err);
+            } else {
+                console.log(row)
+                res.render('RelArt', {data: row});
+            }
+        })})
+}
+
 function registrarArticulo(req, res){
     
     const data = req.body
@@ -90,22 +104,6 @@ function registrarArticulo(req, res){
             } else{                   
                     
                         conn.query("SELECT id_usuario FROM usuario where email = ?",[data.correo], (err, rows) =>{
-<<<<<<< HEAD
-                            var values = {
-                                id_usuario: rows[0].id_usuario,
-                                titulo: data.titulo,
-                                autores: data.autores,
-                                citacion: data.citacion,
-                                codigo_pais: 'COL',
-                                ano: data.ano,
-                                palabras_clave: data.palabrasClave,
-                                url: data.url,
-                                resumen: data.resumen,
-                                conclusiones: data.conclusiones,
-                                notas: data.notas
-                            } 
-                            console.log(values);
-=======
                             if(err){
                                 res.json(err);
                             }
@@ -125,7 +123,6 @@ function registrarArticulo(req, res){
                                 } 
                                 console.log(values);
                             }
->>>>>>> 47db6b06edda93a4d7900eec221be339de55c101
                             conn.query('INSERT INTO articulo SET ?', [values], (err, rows2) =>{
                                 if (err) {
                                     res.json(err);
@@ -155,5 +152,6 @@ module.exports = {
     registrarArticulo,
     verArticulo,
     getAll,
-    deleteById
+    deleteById, 
+    filtrado
 }

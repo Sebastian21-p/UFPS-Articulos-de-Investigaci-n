@@ -19,4 +19,6 @@ router.get('/registros', articuloController.getAll)
 
 router.post('/delete/:id', articuloController.deleteById)
 
+router.post('/RelArtF', articuloController.filtrado)
+
 module.exports = router

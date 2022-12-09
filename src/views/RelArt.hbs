@@ -38,8 +38,10 @@
     <div class="container" id="buscador">
         <div class="row">
             <div class="col-xd-12 col-sm-11">
-        <p>Filtro de busqueda: <input type="text" size="50%"></p>
-        </div>
+              <form action="/articulos/RelArtF" method="post">
+        <p>Filtro de busqueda: <input type="text" id="searchInput" name="filtro" placeholder="Filtra por texto" autocomplete="off" size="50%"></p>
+          <button type="submit">Filtrar</button>
+        </form></div>
         <div class="col-sm-1">
           <a href="/articulos/registrar"><button type="button" class="btn btn-danger btn-circle btn-lg"><i class="fa fa-plus"></i></button></a>          
         </div>
