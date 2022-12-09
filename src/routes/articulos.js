@@ -15,4 +15,6 @@ router.post('/registrar', articuloController.registrarArticulo)
 
 router.get('/verArt', articuloController.verArticulo)
 
+router.get('/registros', articuloController.getAll)
+
 module.exports = router

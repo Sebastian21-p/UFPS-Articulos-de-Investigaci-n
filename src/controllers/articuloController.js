@@ -1,4 +1,13 @@
-
+function getAll(req, res){
+    req.getConnection((err, conn) =>{
+        conn.query(`SELECT * FROM articulo`, (err, row) => {
+            if(err){
+                res.json(err);
+            } else {
+                res.json(row);
+            }
+        })})
+}
 
 function listArticulos(req, res){
     
@@ -98,5 +107,6 @@ module.exports = {
     listArticulosAdm,
     formatoArticulo,
     registrarArticulo,
-    verArticulo
+    verArticulo,
+    getAll
 }
