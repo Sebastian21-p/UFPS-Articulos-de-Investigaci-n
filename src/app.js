@@ -24,11 +24,11 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json())
 
 app.use(myconnection(mysql, {
-    host: 'localhost',
-    user: 'root',
-    password: '',
+    host: 'bkouwemwm45v2unu2xub-mysql.services.clever-cloud.com',
+    user: 'uupiy1zohfk5nre4',
+    password: 'Obr9b74iO9fbVFd15GYF',
     port: 3306,
-    database: 'gestion_de_art'
+    database: 'bkouwemwm45v2unu2xub'
 }))
 
 app.use(session({

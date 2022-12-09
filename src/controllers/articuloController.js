@@ -53,7 +53,6 @@ function registrarArticulo(req, res){
             } else{                   
                     
                         conn.query("SELECT id_usuario FROM usuario where email = ?",[data.correo], (err, rows) =>{
-                            console.log(rows);
                             var values = {
                                 id_usuario: rows[0].id_usuario,
                                 titulo: data.titulo,
