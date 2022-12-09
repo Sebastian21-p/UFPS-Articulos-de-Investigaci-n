@@ -58,8 +58,9 @@ function registrarArticulo(req, res){
                                 titulo: data.titulo,
                                 autores: data.autores,
                                 citacion: data.citacion,
-                                pais: data.pais,
-                                ano: 'COL',
+                                //Maldeto alejandro
+                                codigo_pais: 'COL',
+                                ano: data.ano,
                                 palabras_clave: data.palabrasClave,
                                 url: data.url,
                                 resumen: data.resumen,
