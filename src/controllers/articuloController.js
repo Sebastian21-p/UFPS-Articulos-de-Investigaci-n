@@ -52,7 +52,7 @@ function registrarArticulo(req, res){
                 res.render('registrarArticulos', {error: 'Error: Article already exists !'})
             } else{                   
                     
-                        conn.query("SELECT id FROM usuario where email = ?",[data.correo], (err, rows) =>{
+                        conn.query("SELECT id_usuario FROM usuario where email = ?",[data.correo], (err, rows) =>{
                             console.log(rows);
                             var values = {
                                 id_usuario: rows[0].id_usuario,
