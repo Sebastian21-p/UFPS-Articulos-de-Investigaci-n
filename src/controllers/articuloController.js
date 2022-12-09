@@ -59,7 +59,7 @@ function registrarArticulo(req, res){
                                 autores: data.autores,
                                 citacion: data.citacion,
                                 pais: data.pais,
-                                ano: data.ano,
+                                ano: 'COL',
                                 palabras_clave: data.palabrasClave,
                                 url: data.url,
                                 resumen: data.resumen,
