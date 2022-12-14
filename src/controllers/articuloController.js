@@ -9,6 +9,17 @@ function getAll(req, res){
         })})
 }
 
+function getPais(req, res){
+    req.getConnection((err, conn) =>{
+        conn.query(`SELECT * FROM pais`, (err, row) => {
+            if(err){
+                res.json(err);
+            } else {
+                res.json(row);
+            }
+        })})
+}
+
 function deleteById(req, res){
     req.getConnection((err, conn) =>{
         const {id} = req.params;
@@ -79,15 +90,28 @@ function verArticulo(req, res){
         })})
 }
 
+function consultaEsp(req, res){
+    const data = req.body
+    req.getConnection((err, conn) =>{
+        //console.log(data.filtro);
+        conn.query(`SELECT t1.*, t2.nombre from articulo as t1 join pais as t2 on t1.codigo_pais = t2.codigo_pais`, (err, row) => {
+            if(err){
+                res.json(err);
+            } else {
+                res.json(row);
+            }
+        })})
+}
+
 function filtrado(req, res){
     const data = req.body
     req.getConnection((err, conn) =>{
-        console.log(data.filtro);
+        //console.log(data.filtro);
         conn.query(`SELECT * FROM articulo where titulo LIKE '%${data.filtro}%'`, (err, row) => {
             if(err){
                 res.json(err);
             } else {
-                console.log(row)
+                //console.log(row)
                 res.render('RelArt', {data: row});
             }
         })})
@@ -153,5 +177,7 @@ module.exports = {
     verArticulo,
     getAll,
     deleteById, 
-    filtrado
+    filtrado,
+    consultaEsp,
+    getPais
 }

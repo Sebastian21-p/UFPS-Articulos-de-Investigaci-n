@@ -21,4 +21,8 @@ router.post('/delete/:id', articuloController.deleteById)
 
 router.post('/RelArtF', articuloController.filtrado)
 
+router.get('/consultaEsp', articuloController.consultaEsp)
+
+router.get('/getPais', articuloController.getPais)
+
 module.exports = router
