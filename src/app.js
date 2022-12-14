@@ -52,11 +52,7 @@ app.use(express.static(__dirname + '/public'));
 
 app.get('/articulos', (req, res) =>{
     if(req.session.loggedin == true){
-        if(req.session.estado == 1){
-            res.render('RelArt', {id: req.session.id} )
-        } else {
-            res.render('RelArtU', {id: req.session.id} )
-        }        
+        res.render('RelArt', {id: req.session.id} )
     } else {
         res.redirect('/login');
     }
@@ -64,12 +60,7 @@ app.get('/articulos', (req, res) =>{
 
 app.get('/', (req, res) =>{
     if(req.session.loggedin == true){
-        if(req.session.estado == 1){
-            res.render('inicioAdm', {id: req.session.id}  )
-        } else {
-            res.render('inicio', {id: req.session.id}  )
-        }
-        
+        res.render('inicioAdm', {id: req.session.id}  )
     } else {
         res.redirect('/login');
     }

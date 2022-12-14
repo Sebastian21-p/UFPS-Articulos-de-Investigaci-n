@@ -11,12 +11,27 @@ function listProyectos(req, res){
                     res.json(err);
                 } else {
                     //console.log(row);
-                    res.render('RelPro', {data: row})
+                    res.json(row);
+                    //res.render('RelPro', {data: row})
                 }
             })})
     }
 }
 
+function createProjects(req, res){
+    const data = req.body;
+    req.getConnection((err, conn) =>{
+        conn.query(`INSERT INTO proyecto SET ?`, [data], (err, row) => {
+            if(err){
+                res.json(err);
+            }
+            else{
+                res.json(row);
+            }
+        })})
+}
+
 module.exports = {    
-    listProyectos
+    listProyectos,
+    createProjects
 }

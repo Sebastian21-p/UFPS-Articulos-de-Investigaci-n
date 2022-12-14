@@ -28,7 +28,7 @@ function deleteById(req, res){
             if(err){
                 res.json(err);
             } else {
-                console.log("Borró !");
+                //console.log("Borró !");
                 res.redirect('/articulos/RelArt');
             }
         })})
@@ -39,7 +39,7 @@ function listArticulos(req, res){
     if(req.session.loggedin != true){
         res.render('index')
     } else {
-        res.render('RelArt', {name: req.session.name, estado: req.session.estado})
+        res.render('RelArt', {name: req.session.name})
     }
     
 }
