@@ -83,8 +83,58 @@ function formProyectos(req, res){
     }
 }
 
+function formPregunta(req, res){
+    const {id} = req.params;
+    if(!req.session.loggedin){
+        res.redirect('/')
+    } else {  req.getConnection((err, conn) =>{
+        conn.query(`SELECT * FROM pregunta WHERE pregunta = ?`, [data.pregunta], (err, preguntadata) => {
+            if(proyectodata.length > 0){
+                res.render('preguntas', {error: 'Error: Question already exists !'})
+            } else{var values = {
+                                    id_proyecto: id,
+                                    pregunta: data.pregunta,
+                                    notas: data.notas
+                                }              
+                                console.log(values);     
+                                    
+                                    req.getConnection((err, conn) =>{
+                                        conn.query(`INSERT INTO pregunta SET ?`, [values], (err, row) => {
+                                            if(err){
+                                                res.json(err);
+                                            }
+                                            else{
+                                                res.redirect('/proyectos/RelPro');
+                                            }
+                                        })
+                                    })
+                                } 
+        })})
+    }    
+            }            
+
+
+function verProyecto(req, res){
+    req.getConnection((err, conn) =>{
+        const {id} = req.params;
+        conn.query(`SELECT * FROM proyecto where id_proyecto = ?`,[id] , (err, row) => {
+            if(err){
+                res.json(err);
+            } else {conn.query(`SELECT * FROM pregunta where id_proyecto = ?`,[id] , (err, row2) => {
+                if(err){
+                    res.json(err);
+                } else {
+                //console.log(row)
+                res.render('preguntas', {data: row, data2: row2});
+                }
+            })
+        }})})
+}
+
 module.exports = {    
     listProyectos,
     createProjects,
-    formProyectos
+    formProyectos,
+    verProyecto,
+    formPregunta
 }
