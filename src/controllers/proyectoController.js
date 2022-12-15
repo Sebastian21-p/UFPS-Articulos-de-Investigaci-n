@@ -85,16 +85,17 @@ function formProyectos(req, res){
 
 function formPregunta(req, res){
     const {id} = req.params;
+    const data = req.body
     if(!req.session.loggedin){
         res.redirect('/')
     } else {  req.getConnection((err, conn) =>{
         conn.query(`SELECT * FROM pregunta WHERE pregunta = ?`, [data.pregunta], (err, preguntadata) => {
-            if(proyectodata.length > 0){
+            if(preguntadata.length > 0){
                 res.render('preguntas', {error: 'Error: Question already exists !'})
             } else{var values = {
                                     id_proyecto: id,
                                     pregunta: data.pregunta,
-                                    notas: data.notas
+                                    notas: "5.0"
                                 }              
                                 console.log(values);     
                                     
@@ -127,6 +128,20 @@ function eliminarProyecto(req, res){
         })})
 }
 
+function eliminarPregunta(req, res){
+    req.getConnection((err, conn) =>{
+        const {id} = req.params;
+        //console.log(id);
+        conn.query(`DELETE FROM pregunta where id_pregunta = ?`, [id], (err, row) => {
+            if(err){
+                res.json(err);
+            } else {
+                //console.log("Borró !");
+                res.redirect('/proyectos/RelPro');
+            }
+        })})
+}
+
 
 function verProyecto(req, res){
     req.getConnection((err, conn) =>{
@@ -145,11 +160,14 @@ function verProyecto(req, res){
         }})})
 }
 
+
+
 module.exports = {    
     listProyectos,
     createProjects,
     formProyectos,
     verProyecto,
     formPregunta, 
-    eliminarProyecto
+    eliminarProyecto,
+    eliminarPregunta
 }

@@ -46,9 +46,39 @@
         <div class="col-sm-1">
           <a > <button data-bs-toggle="modal" data-bs-target="#modalPregunta" class="btn btn-danger btn-circle btn-lg"><i class="fa fa-plus"></i></button></a>          
         </div>
-        </button>{{/each}}
+        </button>
     </div>
     </div>
+
+    <!--Ventana Modal-->
+    <div class="modal fade" id="modalPregunta" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalPregunta">Registro de una nueva pregunta</h5>
+            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">   
+                <form action="/proyectos/registrarPregunta/{{id_proyecto}}" method="POST" >
+                <div class="form-group">     
+                <label for="message-text" class="col-form-label">Registre el texto de la pregunta</label>
+                <textarea class="form-control" name="pregunta" id="message-text"></textarea> 
+                </div>
+                
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" id="guardar">Guardar</button>
+            </form>
+            <button type="button" class="btn btn-link" id="cancelar" data-bs-dismiss="modal">Cancelar</button>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {{/each}}
 
     <!--tabla-->
     <div class="container">
@@ -64,41 +94,14 @@
               {{#each data2}}
             <tr>
           <td>{{pregunta}}</td>
-          <td><a href="#"><button>Ver</button></a>
-              <a><button>Editar</button></a>
-              <a><button>Articulos</button></a>
-              <form action="#" method="post"><button type="submit">Eliminar</button></form></td>
+          <td>
+              <form action="/proyectos/deletePregunta/{{id_pregunta}}" method="POST"><button type="submit">Eliminar</button></form></td>
           </tr>
             {{/each}}
             </tbody>
         </table>
     </div>
-<!--Ventana Modal-->
-    <div class="modal fade" id="modalPregunta" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="modalPregunta">Registro de una nueva pregunta</h5>
-            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">   
-                <form>
-                <div class="form-group">     
-                <label for="message-text" class="col-form-label">Registre el texto de la pregunta</label>
-                <textarea class="form-control" id="message-text"></textarea> 
-                </div>
-                </form>
-          </div>
-          <div class="modal-footer">
-            <button type="submit" class="btn btn-primary" id="guardar">Guardar</button>
-            <button type="button" class="btn btn-link" id="cancelar" data-bs-dismiss="modal">Cancelar</button>
-            
-          </div>
-        </div>
-      </div>
-    </div>
+
     
 
     <!-- JavaScript Bundle with Popper -->
