@@ -111,7 +111,21 @@ function formPregunta(req, res){
                                 } 
         })})
     }    
-            }            
+            }     
+            
+function eliminarProyecto(req, res){
+    req.getConnection((err, conn) =>{
+        const {id} = req.params;
+        //console.log(id);
+        conn.query(`DELETE FROM proyecto where id_proyecto = ?`, [id], (err, row) => {
+            if(err){
+                res.json(err);
+            } else {
+                //console.log("Borró !");
+                res.redirect('/proyectos/RelPro');
+            }
+        })})
+}
 
 
 function verProyecto(req, res){
@@ -136,5 +150,6 @@ module.exports = {
     createProjects,
     formProyectos,
     verProyecto,
-    formPregunta
+    formPregunta, 
+    eliminarProyecto
 }
