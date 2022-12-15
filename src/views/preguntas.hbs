@@ -44,7 +44,7 @@
               
                 </div>
         <div class="col-sm-1">
-          <a href="/proyectos/registrarPregunta/{{id_proyecto}}"><button type="button" class="btn btn-danger btn-circle btn-lg"><i class="fa fa-plus"></i></button></a>          
+          <a <!--href="/proyectos/registrarPregunta/{{id_proyecto}}"--></a></a>><button data-bs-toggle="modal" data-bs-target="#modalPregunta" class="btn btn-danger btn-circle btn-lg" ><i class="fa fa-plus"></i></button></a>          
         </div>
         </button>{{/each}}
     </div>
@@ -72,6 +72,28 @@
             {{/each}}
             </tbody>
         </table>
+    </div>
+<!--Ventana Modal-->
+    <div class="modal fade" id="modalPregunta" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalPregunta">Registro de una nueva pregunta</h5>
+            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">            
+                <label for="message-text" class="col-form-label">Registre el texto de la pregunta</label>
+                <textarea class="form-control" id="message-text"></textarea> 
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" id="guardar">Guardar</button>
+            <button type="button" class="btn btn-link" id="cancelar" data-bs-dismiss="modal">Cancelar</button>
+            
+          </div>
+        </div>
+      </div>
     </div>
     
 

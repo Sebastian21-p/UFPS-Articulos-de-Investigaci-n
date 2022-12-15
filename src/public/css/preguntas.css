@@ -33,3 +33,17 @@ h1{
 a{
     color: black;
 }
+
+#guardar{
+    box-sizing: border-box; 
+      width: 20%;
+      height: 31px;
+      background: #D31024;
+      border: 1px solid #000000;
+      border-radius: 0px 0px 0px 20px;
+        
+  }
+
+  #cancelar{
+    color: #000000;
+  }
