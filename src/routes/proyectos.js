@@ -7,4 +7,7 @@ router.get('/RelPro', proyectoController.listProyectos)
 
 router.post('/RegistrarProyecto', proyectoController.createProjects)
 
+router.get('/registrar', proyectoController.formProyectos)
+
+
 module.exports = router
