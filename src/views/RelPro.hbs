@@ -55,16 +55,21 @@
             <thead>
             <tr>
                 <th scope="col">Titulo</th>
-                <th scope="col">Autores</th>
+                <th scope="col">Año</th>
                 <th scope="col">Acciones</th>
             </tr>
             </thead>
             <tbody>
+            {{#each data}}
             <tr>
-                <td>Articulo 1</td>
-                <td>Gabriel Garcia Marquez</td>
-                <td></td>
-            </tr>     
+          <td>{{titulo}}</td>
+          <td>{{ano}}</td>
+          <td><a href="/proyectos/verPro/{{id_proyecto}}"><button>Ver</button></a>
+              <a><button>Editar</button></a> 
+              <a href="/proyectos/preguntas/{{id_proyecto}}"><button>Preguntas</button></a>
+              <form action="/proyectos/delete/{{id_proyecto}}" method="post"><button type="submit">Eliminar</button></form></td>
+          </tr>
+            {{/each}} 
             </tbody>
         </table>
     </div>

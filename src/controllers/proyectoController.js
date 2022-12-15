@@ -11,8 +11,17 @@ function listProyectos(req, res){
                     res.json(err);
                 } else {
                     //console.log(row);
-                    res.json(row);
-                    //res.render('RelPro', {data: row})
+                    //console.log(row[0].fecha_inicio.toString()) 
+                    //console.log(ano[3]);
+                    row.forEach(element => {
+                        let ano = element.fecha_inicio.toString().split(" ")
+                        element.ano = ano[3]
+                        
+                    });
+                    //row[0].ano=ano[3]
+                    //res.json(row);
+                    console.log(row);
+                    res.render('RelPro', {data: row})
                 }
             })})
     }
