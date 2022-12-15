@@ -5,6 +5,8 @@ const proyectoController = require('../controllers/proyectoController')
 
 router.get('/RelPro', proyectoController.listProyectos)
 
+router.get('/verProyecto/:id', proyectoController.verProyectoEsp)
+
 router.post('/RegistrarProyecto', proyectoController.createProjects)
 
 router.get('/registrar', proyectoController.formProyectos)

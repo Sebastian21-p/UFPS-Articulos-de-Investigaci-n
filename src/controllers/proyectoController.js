@@ -74,12 +74,8 @@ function createProjects(req, res){
 function formProyectos(req, res){
     if(!req.session.loggedin){
         res.redirect('/')
-    } else {       
-                if(err){
-                    res.json(err)
-                } else{
-                    res.render('crearPro')
-                }            
+    } else {                    
+                    res.render('crearPro')           
     }
 }
 
@@ -142,6 +138,21 @@ function eliminarPregunta(req, res){
         })})
 }
 
+function verProyectoEsp(req, res){
+    req.getConnection((err, conn) =>{
+        const {id} = req.params;
+        conn.query(`SELECT * FROM proyecto where id_proyecto = ?`,[id] , (err, row) => {
+            if(err){
+                    res.json(err);
+                } else {
+                //console.log(row)
+                res.render('verProyecto', {data: row});
+                }
+            })
+        })
+    }
+
+
 
 function verProyecto(req, res){
     req.getConnection((err, conn) =>{
@@ -169,5 +180,6 @@ module.exports = {
     verProyecto,
     formPregunta, 
     eliminarProyecto,
-    eliminarPregunta
+    eliminarPregunta,
+    verProyectoEsp
 }
