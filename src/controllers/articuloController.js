@@ -141,7 +141,7 @@ function registrarArticulo(req, res){
                                     notas: data.notas
                                 } 
                                 console.log(values);
-                            }
+                            
                             conn.query('INSERT INTO articulo SET ?', [values], (err, rows2) =>{
                                 if (err) {
                                     res.json(err);
@@ -155,10 +155,10 @@ function registrarArticulo(req, res){
                                     
                                     res.redirect('/articulos')
                                 })*/
-                        })                        
+                            }})                        
             })
         }
-        
+
 
 module.exports = {
     listArticulos,
