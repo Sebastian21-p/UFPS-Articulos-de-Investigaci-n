@@ -38,7 +38,15 @@ function auth(req, res){
 
 function register(req, res){
     if(req.session.loggedin != true){
-        res.render('registro')
+        req.getConnection((err, conn) =>{
+            conn.query(`SELECT * FROM pais`, (err, row) => {
+                if(err){
+                    res.json(err);
+                } else {
+                    res.render('registro', {data: row})
+                }
+            })})
+        
     } else {
         res.redirect('inicio');
     }

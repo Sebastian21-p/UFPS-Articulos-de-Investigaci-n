@@ -23,9 +23,9 @@
             <input type="text" id="nombre" class="register" name="nombre" placeholder="Nombre"required>
             <br><br>
             <select class="form-select form-select-sm" id="pais" name="pais" aria-label="Default select example">
-              <option value="Colombia" selected>Colombia</option>
-              <option value="Venezuela">Venezuela</option>
-              <option value="Argentina">Argentina</option>
+              {{#each data}}
+                            <option value="{{codigo_pais}}">{{nombre}}</option>
+              {{/each}}
             </select>
         </div>
         

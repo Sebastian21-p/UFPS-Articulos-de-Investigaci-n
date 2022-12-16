@@ -94,7 +94,7 @@ function consultaEsp(req, res){
     const data = req.body
     req.getConnection((err, conn) =>{
         //console.log(data.filtro);
-        conn.query(`SELECT t1.*, t2.nombre from articulo as t1 join pais as t2 on t1.codigo_pais = t2.codigo_pais`, (err, row) => {
+        conn.query(`SELECT * FROM pais`, (err, row) => {
             if(err){
                 res.json(err);
             } else {
