@@ -93,7 +93,6 @@ function verArticulo(req, res){
 function consultaEsp(req, res){
     const data = req.body
     req.getConnection((err, conn) =>{
-        //console.log(data.filtro);
         conn.query(`SELECT * FROM pais`, (err, row) => {
             if(err){
                 res.json(err);
@@ -121,28 +120,13 @@ function registrarArticulo(req, res){
     
     const data = req.body
     data.id_usuario = req.session.id_user
-    console.log(data);
+    //console.log(data);
     req.getConnection((err, conn) =>{
         conn.query(`SELECT * FROM articulo WHERE titulo = ?`, [data.titulo], (err, articulodata) => {
             if(articulodata.length > 0){
                 res.render('registrarArticulos', {error: 'Error: Article already exists !'})
             } else{  
-                                var values = {
-                                    id_usuario: rows[0].id_usuario,
-                                    titulo: data.titulo,
-                                    autores: data.autores,
-                                    citacion: data.citacion,
-                                    codigo_pais: data.codigo_pais,
-                                    ano: data.ano,
-                                    palabras_clave: data.palabrasClave,
-                                    url: data.url,
-                                    resumen: data.resumen,
-                                    conclusiones: data.conclusiones,
-                                    notas: data.notas
-                                } 
-                                console.log(values);
-                            
-                            conn.query('INSERT INTO articulo SET ?', [values], (err, rows2) =>{
+                            conn.query('INSERT INTO articulo SET ?', [data], (err, rows2) =>{
                                 if (err) {
                                     res.json(err);
                                 }
