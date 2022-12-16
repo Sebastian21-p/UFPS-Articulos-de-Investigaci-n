@@ -67,8 +67,7 @@ function formPregunta(req, res){
                 res.render('preguntas', {error: 'Error: Question already exists !'})
             } else{var values = {
                                     id_proyecto: id,
-                                    pregunta: data.pregunta,
-                                    notas: "5.0"
+                                    pregunta: data.pregunta
                                 }              
                                 console.log(values);     
                                     

@@ -120,18 +120,13 @@ function filtrado(req, res){
 function registrarArticulo(req, res){
     
     const data = req.body
+    data.id_usuario = req.session.id_user
     console.log(data);
     req.getConnection((err, conn) =>{
         conn.query(`SELECT * FROM articulo WHERE titulo = ?`, [data.titulo], (err, articulodata) => {
             if(articulodata.length > 0){
                 res.render('registrarArticulos', {error: 'Error: Article already exists !'})
-            } else{                   
-                    
-                        conn.query("SELECT id_usuario FROM usuario where email = ?",[data.correo], (err, rows) =>{
-                            if(err){
-                                res.json(err);
-                            }
-                            else{
+            } else{  
                                 var values = {
                                     id_usuario: rows[0].id_usuario,
                                     titulo: data.titulo,
@@ -152,7 +147,7 @@ function registrarArticulo(req, res){
                                     res.json(err);
                                 }
                                 else {
-                                    console.log(rows2);
+                                    //console.log(rows2);
                                     res.redirect('/articulos/RelArt')
                                 }
                             })
@@ -160,14 +155,10 @@ function registrarArticulo(req, res){
                                     
                                     res.redirect('/articulos')
                                 })*/
-                        })
-                        
-            }
-        })
-    })
-
-    
-}
+                        })                        
+            })
+        }
+        
 
 module.exports = {
     listArticulos,
