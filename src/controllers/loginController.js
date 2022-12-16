@@ -23,13 +23,11 @@ function auth(req, res){
                     } else {
                         req.session.loggedin = true
                         req.session.nombre = element.nombre
-                        req.session.estado = element.estado
-                        req.session.id = element.id
+                        req.session.id_user = element.id_usuario
                         res.render('inicio',{name: req.session.nombre})
                     }
                  });
                 })
-
             } else{
                 res.render('index', {error: 'Error: user already exists !'})
             }
