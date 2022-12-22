@@ -26,8 +26,8 @@ function list(req, res){
 function verArticulosDePregunta(req, res){
     req.getConnection((err, conn) =>{
         const {id} = req.params;
-        console.log(id);
-        conn.query(`SELECT a.titulo, a.autores FROM articulo a join revision r on r.id_articulo = a.id_articulo join pregunta p on p.id_pregunta = r.id_pregunta where r.id_pregunta = ?`,[id] , (err, row) => {
+        //console.log(id);
+        conn.query(`SELECT a.*, r.*, p.* FROM articulo a join revision r on r.id_articulo = a.id_articulo join pregunta p on p.id_pregunta = r.id_pregunta where r.id_pregunta = ?`,[id] , (err, row) => {
             if(err){
                 res.json(err);
             } else {
@@ -36,9 +36,40 @@ function verArticulosDePregunta(req, res){
         }})})
 }
 
+function agregarRevision(req, res){
+    const {id} = req.params;
+    const data = req.body
+    if(!req.session.loggedin){
+        res.redirect('/')
+    } else {  req.getConnection((err, conn) =>{
+        conn.query(`SELECT * FROM revision WHERE id_articulo = ?`, [data.id_articulo], (err, revisiondata) => {
+            if(revisiondata.length > 0){
+                res.render('preguntas', {error: 'Error: Question already exists !'})
+            } else{var values = {
+                                    id_proyecto: id,
+                                    pregunta: data.pregunta
+                                }              
+                                console.log(values);     
+                                    
+                                    req.getConnection((err, conn) =>{
+                                        conn.query(`INSERT INTO pregunta SET ?`, [values], (err, row) => {
+                                            if(err){
+                                                res.json(err);
+                                            }
+                                            else{
+                                                res.redirect('/proyectos/RelPro');
+                                            }
+                                        })
+                                    })
+                                } 
+        })})
+    }
+}
+
 
 
 module.exports = { 
+    agregarRevision,
     verArticulosDePregunta, 
     list,  
     verPreguntas
