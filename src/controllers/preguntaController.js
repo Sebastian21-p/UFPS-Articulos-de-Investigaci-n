@@ -73,13 +73,20 @@ function verRevision(req, res){
                 if(err){
                     res.json(err);
                 } else {
-                    conn.query(`SELECT * FROM pregunta where id_pregunta = ?`,[id], (err, rows2) => {
+                    let id_pregunta = row[0].id_pregunta;
+                    let id_articulo = row[0].id_articulo;
+                    conn.query(`SELECT * FROM pregunta where id_pregunta = ?`,[id_pregunta], (err, rows2) => {
                         if(err){
                             res.json(err);
-                        } else {      
-                    res.render('agregarArticuloAPregunta', {data: row, data2: rows2})           
-                }
+                        } else {    
+                            conn.query(`SELECT * FROM articulo where id_articulo = ?`,[id_articulo], (err, rows3) => {
+                                if(err){
+                                    res.json(err);
+                                } else {                                      
+                                     res.render('verRevision', {pregunta: rows2, pregunta: rows3})           
+                        }
             })}
+        })}
     })})
     }
 }
