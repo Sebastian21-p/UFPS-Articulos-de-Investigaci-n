@@ -68,7 +68,8 @@
             <tr>
           <td>{{titulo}}</td>
           <td>{{autores}}</td>
-          <td id="botones"><a href="/articulos/verArt/{{id_articulo}}"><button id="ver">Ver</button></a>
+          <td id="botones"><a href="/preguntas/verRevision/{{id_revision}}"><button id="ver">Ver</button></a>
+              <a href="/articulos/verArt/{{id_articulo}}"><button id="ver">Articulo</button></a>
               <form action="/preguntas/deleteRevision/{{id_revision}}" method="POST"><button type="submit" id="eliminar">Eliminar</button></form>
             </td>
           </tr>
