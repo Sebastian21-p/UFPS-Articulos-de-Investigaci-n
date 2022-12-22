@@ -39,10 +39,10 @@
 
     <!--Formulario-->
     <div class="container">
-        <form action="" method="POST" id="formulario">
+        <form action="/preguntas/agregarArticulo" method="POST" id="formulario">
             <div class="form-group">
                 <label for="input">Titulo del Articulo</label>
-                        <select class="form-control" id="titulo" name="titulo">
+                        <select class="form-control" id="id_articulo" name="id_articulo">
                             {{#each data}}
                             <option value="{{id_articulo}}">{{titulo}}</option>
                             {{/each}}
@@ -51,11 +51,13 @@
             <div class="row">
                 <div class="col-xd-12 col-sm-7">
                     <div class="form-group">
+                      {{#each data2}}
+                        <input id="id_pregunta" name="id_pregunta" type="hidden" value="{{id_pregunta}}">  {{/each}}           
                         <label for="input">Pregunta del Proyecto</label>
-                        <p id="pregunta" name="pregunta">{{pregunta}}</p>
+                        <p id="pregunta" name="pregunta">{{#each data2}}{{pregunta}}{{/each}}  </p>
                     </div>
                 </div>
-
+                     
             </div>
             <div class="form-group">
                 <label for="input">Aporte</label>

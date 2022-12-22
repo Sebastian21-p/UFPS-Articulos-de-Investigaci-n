@@ -7,5 +7,9 @@ router.get('/:id', preguntaController.verPreguntas)
 
 router.get('/verArticulos/:id', preguntaController.verArticulosDePregunta)
 
+router.get('/agregarArticulo/:id', preguntaController.formRevision)
+
+router.post('/agregarArticulo', preguntaController.agregarRevision)
+
 
 module.exports = router

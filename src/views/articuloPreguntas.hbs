@@ -42,13 +42,13 @@
         <div class="col-xd-1 col-sm-1" ><h1>Pregunta:</h1></div>      
             <div class="col-xd-11 col-sm-10">
               
-              {{#each data}}
-              <p id="pregunta" name="pregunta">{{p.titulo}}</p>
+              {{#each data2}}
+              <p id="pregunta" name="pregunta">{{pregunta}}</p>
               
                 </div>
         <div class="col-sm-1">
-          <a href="#"> <button type="button" class="btn btn-danger btn-circle btn-lg"><i class="fa fa-plus"></i></button></a>          
-        </div>
+          <a href="/preguntas/agregarArticulo/{{id_pregunta}}"> <button type="button" class="btn btn-danger btn-circle btn-lg"><i class="fa fa-plus"></i></button></a>          
+        </div>{{/each}}
         </button>
     </div>
     </div>
@@ -64,7 +64,7 @@
                 <th scope="col">Acciones</th>
             </tr>
             </thead>
-            <tbody id="tbody">
+            <tbody id="tbody">{{#each data}}
             <tr>
           <td>{{titulo}}</td>
           <td>{{autores}}</td>
