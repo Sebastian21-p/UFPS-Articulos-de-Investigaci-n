@@ -9,6 +9,7 @@ const bodyParser = require('body-parser')
 const loginRoutes = require('./routes/login')
 const articulosRoutes = require('./routes/articulos')
 const proyectosRoutes = require('./routes/proyectos')
+const preguntasRoutes = require('./routes/preguntas')
 
 const app = express()
 app.set('port', 3000)
@@ -47,6 +48,7 @@ app.use(bodyParser.json())
 app.use('/', loginRoutes)
 app.use('/articulos', articulosRoutes)
 app.use('/proyectos', proyectosRoutes)
+app.use('/preguntas', preguntasRoutes)
 
 app.use(express.static(__dirname + '/public'));
 
@@ -69,6 +71,14 @@ app.get('/', (req, res) =>{
 app.get('/proyectos', (req, res) =>{
     if(req.session.loggedin == true){        
         res.render('RelPro', {id: req.session.id}  )           
+    } else {
+        res.redirect('/login');
+    }
+})
+
+app.get('/preguntas', (req, res) =>{
+    if(req.session.loggedin == true){        
+        res.render('RelPro'  )           
     } else {
         res.redirect('/login');
     }
