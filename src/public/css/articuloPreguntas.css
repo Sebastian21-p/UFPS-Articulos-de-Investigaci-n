@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins',sans-serif;
+   
 }
 
 html, body{
@@ -11,8 +12,19 @@ html, body{
     background-image: url(../img/fondo.jpg);
 }
 
+#cuerpo{
+    background-color: white;
+    height: 100%;
+}
 h3{
     text-align: center;
+    color: red;
+}
+
+h1{
+    font-size: 100%;
+    margin-left: 25%;
+    font-weight: bold;
 }
 
 .btn-circle {
@@ -24,13 +36,26 @@ h3{
     font-size: 22px;
     line-height: 1.42857;
 }
-#cuerpo{
-    background-color: white;
-    height: 100%;
+
+a{
+    color: black;
 }
-tr {
+
+#guardar{
+    box-sizing: border-box; 
+      width: 20%;
+      height: 31px;
+      background: #D31024;
+      border: 1px solid #000000;
+      border-radius: 0px 0px 0px 20px;
+        
+  }
+
+  tr {
     border: #000000 2px solid;
   }
+
+
   #eliminar{
     box-sizing: border-box; 
     width: 20%;
@@ -46,17 +71,11 @@ tr {
     margin-right: 10px;
     font-weight: bold;
   }
-  #pregunta{
-   box-sizing: border-box; 
-    width: 20%;
-    border: 0px;
-    border-radius: 10px;
-    margin-right: 10px;
-    font-weight: bold;
-  }
   #botones{
     display: flex;
   }
-  #filtro{
-    border-radius: 1px;
+
+  #cancelar{
+    color: #000000;
   }
+  

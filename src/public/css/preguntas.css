@@ -8,8 +8,22 @@
 html, body{
     height: 100%;
     width: 100%;
+    background-image: url(../img/fondo.jpg);
 }
-
+#cuerpo{
+    background-color: white;
+    height: 100%;
+}
+tr {
+    border: #000000 2px solid;
+  }
+  #eliminar{
+    box-sizing: border-box; 
+    width: 20%;
+    border: 0px;
+    border-radius: 10px;  
+    font-weight: bold;
+  }
 h3{
     text-align: center;
     color: red;
