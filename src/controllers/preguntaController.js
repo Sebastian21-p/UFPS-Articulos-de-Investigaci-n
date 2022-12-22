@@ -83,7 +83,7 @@ function verRevision(req, res){
                                 if(err){
                                     res.json(err);
                                 } else {                                      
-                                     res.render('verRevision', {pregunta: rows2, pregunta: rows3})           
+                                     res.render('verRevision', {pregunta: rows2, articulo: rows3, revision: row})           
                         }
             })}
         })}

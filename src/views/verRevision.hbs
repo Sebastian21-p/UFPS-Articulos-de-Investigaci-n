@@ -41,10 +41,14 @@
 <!--Formulario-->
 <div class="container" id="articulo">
         <div class="form-group" id="prueba">
-            {{#each data}}
+            {{#each pregunta}}
+            <label for="input"><b>Pregunta</b></label>
+            <p id="pregunta" name="pregunta">{{pregunta}}</p>
+        </div>{{/each}}{{#each articulo}}
+        <div class="form-group" id="prueba">
             <label for="input"><b>Titulo del Articulo</b></label>
             <p id="titulo" name="titulo">{{titulo}}</p>
-        </div>
+        </div>{{/each}}{{#each revision}}
         <div class="form-group" id="prueba">
             <label for="input"><b>Aporte</b></label>
             <p id="aporte" name="aporte">{{aporte}}</p>
@@ -55,7 +59,7 @@
         </div>
         <div class="form-group" id="prueba">
             <label for="input"><b>Fecha Creacion </b></label>
-            <p id="fecha_creacion" name="fecha_creacion">{{fecha_creacion   }}</p>
+            <p id="fecha_creacion" name="fecha_creacion">{{fecha_creacion}}</p>
             {{/each}}
         </div>
     </div>
