@@ -20,7 +20,7 @@ html,body{
 #cuerpo{
     
     width: 50%;
-  height: 50%;
+  height: auto;
   background-color: white;
   /* centrar vertical y horizontalmente */
   position: absolute;

@@ -16,7 +16,7 @@ html, body{
 }
 #articulo{
     width:100%;
-    height:85%;
+    height:auto;
     border:3px solid brown;
     border-radius:22px;
     background-color:#fdf5d8;
