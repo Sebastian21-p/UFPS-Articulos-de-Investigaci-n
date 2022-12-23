@@ -15,6 +15,8 @@ router.post('/registrar', articuloController.registrarArticulo)
 
 router.get('/verArt/:id', articuloController.verArticulo)
 
+router.get('/verArt/Excel/:id', articuloController.descargarExcel)
+
 router.get('/registros', articuloController.getAll)
 
 router.post('/delete/:id', articuloController.deleteById)

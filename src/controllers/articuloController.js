@@ -1,3 +1,5 @@
+const download = require('download');
+
 function getAll(req, res){
     req.getConnection((err, conn) =>{
         conn.query(`SELECT * FROM articulo`, (err, row) => {
@@ -61,6 +63,61 @@ function listArticulosAdm(req, res){
     }
 }
 
+
+function descargarExcel (req, res){ 
+        req.getConnection((err, conn) =>{
+        const {id} = req.params;
+         conn.query(`SELECT * FROM articulo where id_articulo = ?`,[id] , (err, row) => {
+            if(err){
+                res.json(err);
+            } else {   /*        
+                        const xl = require('excel4node');
+                        const wb = new xl.Workbook();
+                        const ws = wb.addWorksheet(row[0].titulo);
+
+                        row[0].id_articulo = row[0].id_articulo + "";
+                        row[0].id_usuario = row[0].id_usuario + "";
+                    
+                        const headingColumnNames = [
+                            "Id Articulo",
+                            "Id Usuario",
+                            "Titulo",
+                            "Autores",
+                            "Citaciones",
+                            "Código Pais",
+                            "Año",
+                            "Palabras Clave",
+                            "Url",
+                            "Resumen",
+                            "Conclusiones",
+                            "Notas"
+                        ]
+                        //Write Column Title in Excel file
+                        let headingColumnIndex = 1;
+                        headingColumnNames.forEach(heading => {
+                            ws.cell(1, headingColumnIndex++)
+                                .string(heading)
+                        });
+                        //Write Data in Excel file
+                        let rowIndex = 2;
+                        row.forEach( record => {
+                            let columnIndex = 1;
+                            Object.keys(record ).forEach(columnName =>{
+                                ws.cell(rowIndex,columnIndex++)
+                                    .string(record [columnName])
+                            });
+                            rowIndex++;
+                        }); 
+                        wb.write(row[0].titulo+'.xlsx');  */                  
+                             console.log("llegué");
+                             let i = 0; 
+                             let path = '../UFPS-Articulos-de-Investigaci-n/'+row[0].titulo+'.xlsx'
+                             res.download(path)                                                     
+                             
+            }
+        })})
+}
+
 function formatoArticulo(req, res){
     if(!req.session.loggedin){
         res.redirect('/')
@@ -84,7 +141,44 @@ function verArticulo(req, res){
             if(err){
                 res.json(err);
             } else {
-                console.log(row)
+                const xl = require('excel4node');
+                        const wb = new xl.Workbook();
+                        const ws = wb.addWorksheet(row[0].titulo);
+
+                        row[0].id_articulo = row[0].id_articulo + "";
+                        row[0].id_usuario = row[0].id_usuario + "";
+                    
+                        const headingColumnNames = [
+                            "Id Articulo",
+                            "Id Usuario",
+                            "Titulo",
+                            "Autores",
+                            "Citaciones",
+                            "Código Pais",
+                            "Año",
+                            "Palabras Clave",
+                            "Url",
+                            "Resumen",
+                            "Conclusiones",
+                            "Notas"
+                        ]
+                        //Write Column Title in Excel file
+                        let headingColumnIndex = 1;
+                        headingColumnNames.forEach(heading => {
+                            ws.cell(1, headingColumnIndex++)
+                                .string(heading)
+                        });
+                        //Write Data in Excel file
+                        let rowIndex = 2;
+                        row.forEach( record => {
+                            let columnIndex = 1;
+                            Object.keys(record ).forEach(columnName =>{
+                                ws.cell(rowIndex,columnIndex++)
+                                    .string(record [columnName])
+                            });
+                            rowIndex++;
+                        }); 
+                        wb.write(row[0].titulo+'.xlsx');
                 res.render('verArt', {data: row});
             }
         })})
@@ -145,6 +239,7 @@ function registrarArticulo(req, res){
 
 
 module.exports = {
+    descargarExcel,
     listArticulos,
     listArticulosAdm,
     formatoArticulo,
