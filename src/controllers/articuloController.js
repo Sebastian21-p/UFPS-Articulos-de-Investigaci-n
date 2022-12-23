@@ -108,10 +108,12 @@ function descargarExcel (req, res){
                             });
                             rowIndex++;
                         }); 
-                        wb.write(row[0].titulo+'.xlsx');  */                  
+                        wb.write(row[0].titulo+'.xlsx');  */    
+                                       
                              console.log("llegué");
                              let i = 0; 
-                             let path = '../UFPS-Articulos-de-Investigaci-n/'+row[0].titulo+'.xlsx'
+                             let path = row[0].titulo+'.xlsx'
+                             console.log(path);   
                              res.download(path)                                                     
                              
             }
