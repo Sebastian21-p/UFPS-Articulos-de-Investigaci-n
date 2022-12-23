@@ -1,10 +1,10 @@
 # UFPS Articulos de Investigación
-## DESCRIPCÓN
+## DESCRIPCIÓN
 Con el ánimo de apoyar el trabajo de los investigadores, se hace necesario desarrollar una solución que permita realizar el registro de las revisiones que se realizan para los proyectos de investigacion
 ## REQUISITOS
-Para el desarrollo, solo necesitará Node.js y un paquete global de nodos, Yarn, instalado en su entorno.
-### NODO
-- Instalación del nodo #### en Windows
+Para el desarrollo, solo necesitará Node.js y un paquete global de node, instalado en su entorno.
+### NODE
+- Instalación de node #### en Windows
 
    Simplemente vaya al [sitio web oficial de Node.js](https://nodejs.org/) y descargue el instalador.
 Además, asegúrese de tener `git` disponible en su RUTA, `npm` podría necesitarlo (lo puede encontrar en git [aquí](https://git-scm.com/)).
