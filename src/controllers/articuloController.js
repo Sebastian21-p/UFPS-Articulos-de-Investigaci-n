@@ -56,7 +56,7 @@ function listArticulosAdm(req, res){
                 if(err){
                     res.json(err);
                 } else {
-                    //console.log(row);
+                    console.log(row);
                     res.render('RelArt', {data: row})
                 }
             })})
@@ -265,14 +265,27 @@ function formEditarArticulo(req, res){
 function editarArticulo(req, res){
     const data = req.body
     data.id_usuario = req.session.id_user
-    //console.log(data);
+    let values = {
+        titulo: data.titulo,
+        autores: data.autores,
+        citacion: data.citacion,
+        codigo_pais: data.codigo_pais,
+        ano: data.ano,
+        palabras_clave: data.palabras_clave,
+        url: data.url,
+        resumen: data.resumen,
+        conclusiones: data.conclusiones,
+        notas: data.notas
+    }
+    console.log('data '+data );
+    console.log('values '+values);
     req.getConnection((err, conn) =>{         
-                            conn.query('UPDATE articulo SET ?', [data], (err, rows2) =>{
+                            conn.query('UPDATE articulo SET ? where id_articulo = ?', [values, data.id_articulo], (err, rows2) =>{
                                 if (err) {
                                     res.json(err);
                                 }
                                 else {
-                                    //console.log(rows2);
+                                    console.log(rows2);
                                     res.redirect('/articulos/RelArt')
                                 }
                             })

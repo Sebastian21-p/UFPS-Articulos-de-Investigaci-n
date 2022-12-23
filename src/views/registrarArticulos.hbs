@@ -43,6 +43,7 @@
     <!--Formulario-->
     <div class="container">
         <form action="" method="POST" id="formulario">
+            {{#each data2}}<input id="id_articulo" name="id_articulo" type="hidden" value="{{id_articulo}}">  {{/each}} 
             <div class="form-group">
                 <label for="input">Titulo</label>
                 <input type="text" class="form-control" name="titulo" id="titulo" placeholder="Titulo" required>
