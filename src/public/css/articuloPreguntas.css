@@ -51,26 +51,44 @@ a{
         
   }
 
-  tr {
-    border: #000000 2px solid;
+  th {
+    border: #000000 2px solid !important;
+  }
+  td{
+    border: #000000 2px solid !important;
   }
 
-
+#ver{
+    box-sizing: border-box; 
+    width: 20%;
+    border: 0px;
+    border-radius: 10px;  
+    font-weight: bold;
+    margin-top: 42%;
+    margin-bottom: 25%;
+    margin-right: 10px;
+  }
+  #articulo{
+    box-sizing: border-box; 
+    width: 20%;
+    border: 0px;
+    border-radius: 10px;  
+    font-weight: bold;
+    margin-top: 20%;
+    margin-bottom: 12%;
+    margin-right: 10px;
+  }
   #eliminar{
     box-sizing: border-box; 
     width: 20%;
     border: 0px;
     border-radius: 10px;  
     font-weight: bold;
+    margin-top: 25%;
+    margin-bottom: 15%;
+    
   }
-  #ver{
-    box-sizing: border-box; 
-    width: 20%;
-    border: 0px;
-    border-radius: 10px;
-    margin-right: 10px;
-    font-weight: bold;
-  }
+  
   #botones{
     display: flex;
   }
