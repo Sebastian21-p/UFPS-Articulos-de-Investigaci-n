@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/registrarArticulo.css">
+    <title>Registro articulos</title>
+</head>
+
+<body>
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-lg   static-top">
+        <div class="container">
+            <a class="navbar-brand" href="">
+                <img src="/img/logo_ufps.jpg" alt="..." height="100">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/articulos/RelArt">Volver</a>
+                    </li>
+                    <li class="nav-item">
+
+                        <a class="nav-link" href="#">Salir <i class="fa fa-sign-out"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!--Formulario-->
+    <div class="container">
+        <form action="/articulos/editarArticulo" method="POST" id="formulario">
+            <div class="form-group">
+                <label for="input">Titulo</label>
+                <input type="text" value="{{#each data2}}{{titulo}}{{/each}}" class="form-control" name="titulo" id="titulo" placeholder="Titulo" required>
+            </div>
+            <div class="row">
+                <div class="col-xd-12 col-sm-7">
+                    <div class="form-group">
+                        <label for="input">Autores</label>
+                        <input type="text" class="form-control" value="{{#each data2}}{{autores}}{{/each}}" name="autores" id="autores" placeholder="Autores"
+                            required>
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-group">
+                <label for="input">Citacion</label>
+                <input type="text" class="form-control" value="{{#each data2}}{{citacion}}{{/each}}" name="citacion" id="citacion" placeholder="Citacion" required>
+            </div>
+            <div class="row">
+                <div class="col-xd-12 col-sm-4">
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Pais</label>
+                        <select class="form-control" id="codigo_pais" name="codigo_pais">
+                            {{#each data}}
+                            <option value="{{codigo_pais}}">{{nombre}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-sm-2">
+                    <div class="form-group">
+                        <label for="input">Año</label>
+                        <input type="text" name="ano" value="{{#each data2}}{{ano}}{{/each}}" class="form-control" id="año" placeholder="Año" required>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="input">Palabras claves</label>
+                        <input type="text" class="form-control" name="palabras_clave" value="{{#each data2}}{{palabras_clave}}{{/each}}" id="pC"
+                            placeholder="Palabras Claves" required>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <label for="input">URL</label>
+                <input type="text" class="form-control" value="{{#each data2}}{{url}}{{/each}}" name="url" id="url" placeholder="URL">
+            </div>
+
+            <div class="form-group">
+                <label for="input">Resumen</label>
+                <textarea type="input" class="form-control" id="resumen"  name="resumen" aria-label="With textarea">{{#each data2}}{{resumen}}{{/each}}</textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="input">Conclusiones</label>
+                <textarea class="form-control" id="conclusiones"  name="conclusiones" aria-label="With textarea" required>{{#each data2}}{{conclusiones}}{{/each}}</textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="input">Notas</label>
+                <textarea class="form-control" id="notas" name="notas"  aria-label="With textarea">{{#each data2}}{{notas}}{{/each}}</textarea>
+            </div>
+
+            <!--Boton-->
+            <br>
+            <button type="submit" class="btn btn-primary" value="registrar" id="guardar">Guardar</button>
+        </form>
+    </div>
+
+</body>
+<!--script src="/js/guardarArt.js"></script-->
+</html>

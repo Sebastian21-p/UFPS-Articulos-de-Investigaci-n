@@ -27,4 +27,8 @@ router.get('/consultaEsp', articuloController.consultaEsp)
 
 router.get('/getPais', articuloController.getPais)
 
+router.get('/editarArticulo/:id', articuloController.formEditarArticulo)
+
+router.post('/editarArticulo', articuloController.editarArticulo)
+
 module.exports = router

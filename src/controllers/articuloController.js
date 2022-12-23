@@ -239,8 +239,54 @@ function registrarArticulo(req, res){
             })
         }
 
+function formEditarArticulo(req, res){
+    const {id} = req.params;
+    if(!req.session.loggedin){
+        res.redirect('/')
+    } else {
+        //console.log(req.session.id);
+        req.getConnection((err, conn) =>{
+            conn.query(`SELECT * FROM pais`, (err, row) => {
+                if(err){
+                    res.json(err)
+                } else{
+                    conn.query(`SELECT * FROM articulo where id_articulo = ?`, [id], (err, rows2) => {
+                    if(err){
+                        res.json(err)
+                    } else{
+                        res.render('editarArticulo', {data: row, data2: rows2})
+                    }
+                })}
+                
+            })})
+    }
+}
+
+function editarArticulo(req, res){
+    const data = req.body
+    data.id_usuario = req.session.id_user
+    //console.log(data);
+    req.getConnection((err, conn) =>{         
+                            conn.query('UPDATE articulo SET ?', [data], (err, rows2) =>{
+                                if (err) {
+                                    res.json(err);
+                                }
+                                else {
+                                    //console.log(rows2);
+                                    res.redirect('/articulos/RelArt')
+                                }
+                            })
+                        })    
+                                /*conn.query('INSERT INTO articulo (usuario_id,titulo,autores,citacion,pais,ano,palabras_clave,url,resumen,conclusiones,notas) values ("'+rows[0].id+'","'+data.titulo+'","'+data.autores+'","'+data.citacion+'","'+data.pais+'","'+data.ano+'","'+data.palabrasClave+'","'+data.url+'","'+data.resumen+'","'+data.conclusiones+'","'+data.notas+'")', (err, rows) =>{                                   
+                                    
+                                    res.redirect('/articulos')
+                                })*/                            
+}
+
 
 module.exports = {
+    formEditarArticulo,
+    editarArticulo,
     descargarExcel,
     listArticulos,
     listArticulosAdm,

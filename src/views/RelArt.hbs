@@ -64,8 +64,9 @@
             <tr>
           <td>{{titulo}}</td>
           <td>{{autores}}</td>
-          <td id="botones"><a href="/articulos/verArt/{{id_articulo}}"><button id="ver">Ver</button></a>
-              <a><button id="editar">Editar</button></a> 
+          <td id="botones">
+              <a href="/articulos/verArt/{{id_articulo}}"><button id="ver">Ver</button></a>
+              <a href="/articulos/editarArticulo/{{id_articulo}}"><button id="editar">Editar</button></a> 
               <form action="/articulos/delete/{{id_articulo}}" method="post"><button type="submit" id="eliminar">Eliminar</button></form></td>
           </tr>
             {{/each}}
