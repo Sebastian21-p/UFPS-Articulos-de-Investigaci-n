@@ -8,6 +8,7 @@
 html, body{
     height: 100%;
     width: 100%;
+    background-image: url(../img/fondo.jpg);
 }
 
 h3{
@@ -27,3 +28,43 @@ h3{
 a{
     color: black;
 }
+#cuerpo{
+    background-color: white;
+    height: 100vh;
+}
+#eliminar{
+    box-sizing: border-box; 
+    width: 20%;
+    border: 0px;
+    border-radius: 10px;  
+    font-weight: bold;
+    margin-top: 18%;
+    margin-bottom: 20%;
+  }
+  #ver{
+    box-sizing: border-box; 
+    width: 20%;
+    border: 0px;
+    border-radius: 10px;
+    margin-right: 10px;
+    font-weight: bold;
+    margin-top: 32%;
+  }
+  #editar{
+    box-sizing: border-box; 
+    width: 20%;
+    border: 0px;
+    border-radius: 10px;
+    margin-right: 10px;
+    font-weight: bold;
+    margin-top: 20%;
+  }
+  #botones{
+    display: flex;
+  }
+  th {
+    border: #000000 2px solid !important;
+  }
+  td{
+    border: #000000 2px solid !important;
+  }
