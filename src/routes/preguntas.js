@@ -11,5 +11,7 @@ router.get('/agregarArticulo/:id', preguntaController.formRevision)
 
 router.post('/agregarArticulo', preguntaController.agregarRevision)
 
+router.get('/verRevision/:id', preguntaController.verRevision)
+
 
 module.exports = router

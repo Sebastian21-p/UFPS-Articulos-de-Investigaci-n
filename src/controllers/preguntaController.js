@@ -75,6 +75,9 @@ function verRevision(req, res){
                 } else {
                     let id_pregunta = row[0].id_pregunta;
                     let id_articulo = row[0].id_articulo;
+                    let fechaC = row[0].fecha_creacion.toLocaleDateString();
+                    console.log(fechaC);
+                    row[0].fechaC = fechaC
                     conn.query(`SELECT * FROM pregunta where id_pregunta = ?`,[id_pregunta], (err, rows2) => {
                         if(err){
                             res.json(err);
@@ -85,9 +88,9 @@ function verRevision(req, res){
                                 } else {                                      
                                      res.render('verRevision', {pregunta: rows2, articulo: rows3, revision: row})           
                         }
+                })}
             })}
-        })}
-    })})
+        })})
     }
 }
 
